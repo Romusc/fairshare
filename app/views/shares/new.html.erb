@@ -1,5 +1,5 @@
 <% @shares.each do |share| %>
-  <p> <%= share.user.email %> <p>
+  <p> <%= share.user.first_name %> <%= share.user.last_name %><p>
   <p> <%= share.percentage %> <p>
   <br>
 <% end %>
