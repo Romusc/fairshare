@@ -1,0 +1,12 @@
+<% @shares.each do |share| %>
+  <p> <%= share.user.email %> <p>
+  <p> <%= share.percentage %> <p>
+  <br>
+<% end %>
+
+<%= simple_form_for [@item, @share] do |f| %>
+  <p> Add a user sharing this item <p>
+    <%= f.input :user_id %>
+    <%= f.submit %>
+
+<% end %>
