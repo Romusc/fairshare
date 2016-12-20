@@ -1,10 +1,9 @@
 <h1>Items#new</h1>
 <%= simple_form_for @item do |f| %>
-  <p>Name<p>
-    <%= f.input :name %>
-  <p>Description<p>
-    <%= f.input :description %>
-  <p>Value<p>
-    <%= f.input :value %>
-    <%= f.submit %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :value %>
+  <%= f.input :photo %>
+  <%= f.input :photo_cache, as: :hidden %>
+  <%= f.submit %>
 <% end %>
