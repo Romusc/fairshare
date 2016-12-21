@@ -17,8 +17,12 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 
+# FOR IMAGES
 gem 'cloudinary', '1.1.0'
 gem 'carrierwave'
+
+# FOR FAKE DATA
+gem 'faker'
 
 group :development, :test do
   gem 'binding_of_caller'
