@@ -3,7 +3,7 @@ class SharesController < ApplicationController
   before_action :load_item, only: [:new, :create, :update]
 
   def new
-    @item.shares
+    @users = User.all
     @shares = @item.shares
     @share = Share.new(item_id: @item.id)
     @place = Place.new
