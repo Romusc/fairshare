@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   resources :items, only: [:show, :new, :create, :index, :edit, :update] do
     resources :shares, only: [:index,:new, :create, :update]
   end
+
+  resources :places
 end

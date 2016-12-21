@@ -24,4 +24,15 @@
 
 <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
+
+
+<h3> Add an address <h3>
+<%= simple_form_for @place do |f| %>
+  <%= f.input :address %>
+  <%= f.input :postcode %>
+  <%= f.input :city %>
+  <%= f.submit %>
+<% end %>
+
+
 <%= link_to "Back", :back %>

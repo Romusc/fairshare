@@ -10,6 +10,7 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
+    @item.user_id = current_user.id
     if @item.save
       Share.create!(user_id: current_user.id, percentage: 100, item_id: @item.id)
       redirect_to new_item_share_path(@item)

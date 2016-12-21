@@ -1,5 +1,9 @@
 class RegistrationsController < Devise::RegistrationsController
 
+  def edit
+    @place = Place.new
+  end
+
   private
 
   def sign_up_params
