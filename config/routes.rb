@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   end
 
   resources :places
+
+  resources :friendships
 end

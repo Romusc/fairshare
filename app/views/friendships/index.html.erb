@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h2> Your Friends </h2>
+      <ul>
+        <% current_user.friendships.each do |friendship| %>
+        <li>
+          <%= friendship.friend.first_and_last_name %>
+          <%= link_to "remove", friendship_path(friendship), :method => :delete, class: "btn btn-primary" %>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="col-xs-12">
+      <h2> Those who have befriended you (friend requests) </h2>
+      <ul>
+        <% current_user.inverse_friends.each do |inverse_friend| %>
+          <li>
+            <%= inverse_friend.first_and_last_name %>
+            <%= link_to "Accept Friendship", friendships_path(:friend_id => inverse_friend), :method => :post %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="col-xs-12">
+      <h2> Other Users </h2>
+      <% @users.each do |user| %>
+        <p> <%= user.first_and_last_name %> </p>
+        <%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post %>
+        <br>
+        <br>
+      <% end %>
+    </div>
+  </div>
+</div>
