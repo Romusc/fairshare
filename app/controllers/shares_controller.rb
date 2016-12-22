@@ -24,7 +24,6 @@ class SharesController < ApplicationController
   end
 
   def update
-
     redirect_to item_path
   end
 

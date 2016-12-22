@@ -56,6 +56,21 @@ addresses_array = [
 ]
 
 # First, we create a bunch of users, each with a given address
+user = User.create!(
+  email: "romu@romu.com",
+  first_name: "Romuald",
+  last_name: "Escande",
+  password: "popopo",
+  password_confirmation: "popopo"
+  )
+place = addresses_array.sample
+Place.create!(
+  user_id: user.id,
+  address: "53 Queen Margaret's Grove",
+  postcode: "N1 4PZ",
+  city: "London",
+  )
+
 15.times do
   user = User.create!(
     email: Faker::Internet.free_email,
@@ -85,5 +100,14 @@ User.all.each do |user|
       )
     item.remote_photo_url = i[1]
     item.save!
+    [0, 1, 2, 3].sample.times do
+      share = Share.new(user_id: User.all.sample.id, item_id: item.id, spent: 0)
+      share.save
+    end
+    shares = item.shares
+    shares.each do |share|
+    share.percentage = (100 / (shares.count)).round(2)
+      share.save
+    end
   end
 end
