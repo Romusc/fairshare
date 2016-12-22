@@ -1,10 +1,24 @@
 class ItemsController < ApplicationController
+  before_action :set_item, only: [:show]
 
   def index
     @shares = current_user.shares
     @items = []
     @shares.each do |share|
       @items << Item.find_by_id(share.item_id)
+    end
+  end
+
+  def show
+    @shares = @item.shares
+    @places = []
+    @shares.each do |share|
+      @places << share.user.places.first
+    end
+    @hash = Gmaps4rails.build_markers(@places) do |place, marker|
+      marker.lat place.latitude
+      marker.lng place.longitude
+      # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
     end
   end
 
@@ -38,6 +52,10 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(:name, :description, :value, :photo)
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 
 

@@ -1,7 +1,7 @@
 <h1>Your items</h1>
 <div class="container">
   <% @items.each do |item| %>
-    <div class="row">
+
       <div class="col-xs-6">
         <%= cl_image_tag item.photo, height: 300, width: 400, crop: :fill %>
       </div>
@@ -11,6 +11,7 @@
         </div>
         <div class="col-xs-6 text-right">
           <h2><%= item.value %> GBP</h2>
+          <%= link_to "See Details", item_path(item), class: "btn btn-primary" %>
         </div>
         <br>
         <table class="table">

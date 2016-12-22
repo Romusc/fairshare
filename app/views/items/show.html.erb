@@ -1,0 +1,53 @@
+
+<div id="map" style="width: 100%; height: 300px;"></div>
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      var handler = Gmaps.build('Google');
+      handler.buildMap({ internal: { id: 'map' } }, function() {
+        markers = handler.addMarkers(<%= raw @hash.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        if (markers.length == 0) {
+          handler.getMap().setZoom(2);
+        } else if (markers.length == 1) {
+          handler.getMap().setZoom(14);
+        }
+      });
+    });
+  <% end %>
+<% end %>
+
+<div class="col-xs-6">
+<%= cl_image_tag @item.photo, height: 300, width: 400, crop: :fill %>
+</div>
+<div class="col-xs-6">
+  <div class="col-xs-6">
+    <h2><%= @item.name %></h2>
+  </div>
+  <div class="col-xs-6 text-right">
+    <h2><%= @item.value %> GBP</h2>
+  </div>
+  <div class="col-xs-12">
+    <p><%=@item.description%></p>
+  </div>
+  <br>
+  <table class="table">
+    <thead>
+      <th> User </th>
+      <th> Ownership </th>
+      <th> Spent </th>
+      <th> Owed </th>
+    </thead>
+    <tbody>
+      <% @item.shares.each do |share| %>
+      <tr>
+        <td><%= share.user.first_name %> <%= share.user.last_name %></td>
+        <td><%= share.percentage.round(0) %> %</td>
+        <td><%= share.spent %> GBP</td>
+        <td><%= (((@item.value)*(share.percentage/100)) - (share.spent)).round%> GBP </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

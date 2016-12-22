@@ -26,6 +26,13 @@ gem 'faker'
 
 # FOR GEOCODING
 gem 'geocoder'
+gem 'coffee-rails'
+gem 'gmaps4rails'
+
+source 'https://rails-assets.org' do
+  gem "rails-assets-underscore"
+end
+
 
 group :development, :test do
   gem 'binding_of_caller'
