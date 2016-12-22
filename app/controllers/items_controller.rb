@@ -1,6 +1,11 @@
 class ItemsController < ApplicationController
 
   def index
+    @shares = current_user.shares
+    @items = []
+    @shares.each do |share|
+      @items << Item.find_by_id(share.item_id)
+    end
   end
 
   def new
@@ -12,7 +17,8 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     @item.user_id = current_user.id
     if @item.save
-      Share.create!(user_id: current_user.id, percentage: 100, item_id: @item.id)
+      Share.create!(user_id: current_user.id, percentage: 100, item_id: @item.id,
+        spent: @item.value)
       redirect_to new_item_share_path(@item)
     else
       render :new

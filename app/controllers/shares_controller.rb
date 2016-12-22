@@ -10,7 +10,7 @@ class SharesController < ApplicationController
   end
 
   def create
-    @share = Share.new(item_id: params[:item_id], user_id: share_params[:user_id])
+    @share = Share.new(item_id: params[:item_id], user_id: share_params[:user_id], spent: 0)
     if @share.save
       @shares = @item.shares
       @shares.each do |share|
