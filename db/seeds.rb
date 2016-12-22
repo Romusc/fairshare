@@ -34,6 +34,26 @@ items = [
 ['Badminton', 'https://static.pexels.com/photos/115016/badminton-shuttle-sport-bat-115016.jpeg', 50],
 ]
 
+addresses_array = [
+['3 Shrubbery Close', 'N1 7BZ'],
+['36 Cromwell Ave', 'N6 5HL'],
+['10 Studd St', 'N1 0QJ'],
+['129 Reedham Cl', 'N17 9PY'],
+['19 Stanford Rd', 'N11 3HY'],
+['97 Wynford Rd', 'N1 9TY'],
+['25 Wyemead Cres', 'E4 6HN'],
+['3-23 A124','E6 1PW'],
+['35 Lambert Rd', 'E16 3NN'],
+['72 Thomas Jacomb Pl', 'E17'],
+['25 Wyemead Cres', 'E4 6HN'],
+['3-23 A124', 'E6 1PW'],
+['35 Lambert Rd', 'E16 3NN'],
+['4F Nevern Rd', 'SW5 9PJ'],
+['18 Vicar Ln', 'S40 1PY'],
+['32 Hillyard St', 'SW9 0NL'],
+['32 Waterman St', 'SW15 1DD'],
+['27B Jedburgh St', 'SW11 5QA']
+]
 
 # First, we create a bunch of users, each with a given address
 15.times do
@@ -44,11 +64,12 @@ items = [
     password: "popopo",
     password_confirmation: "popopo"
     )
+  place = addresses_array.sample
   Place.create!(
     user_id: user.id,
-    address: Faker::Address.street_address,
-    city: Faker::Address.city,
-    postcode: Faker::Address.postcode
+    address: place[0],
+    postcode: place[1],
+    city: "London",
     )
 end
 

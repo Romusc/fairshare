@@ -28,12 +28,18 @@
       <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
     </div>
     <div class="col-xs-6">
-      <h3> Add an address <h3>
+      <h3> Main Address </h3>
+      <p><%=@first_place.address%></p>
+      <p><%=@first_place.postcode%></p>
+      <p><%=@first_place.city%></p>
+    </div>
+    <div class="col-xs-6">
+      <h3> Add an Address </h3>
       <%= simple_form_for @place do |f| %>
-        <%= f.input :address %>
-        <%= f.input :postcode %>
-        <%= f.input :city %>
-        <%= f.submit %>
+        <p><%= f.input :address %></p>
+        <p><%= f.input :postcode %></p>
+        <p><%= f.input :city %></p>
+        <p><%= f.submit %></p>
       <% end %>
     </div>
   </div>

@@ -2,6 +2,7 @@ class RegistrationsController < Devise::RegistrationsController
 
   def edit
     @place = Place.new
+    @first_place = current_user.places.first
   end
 
   private

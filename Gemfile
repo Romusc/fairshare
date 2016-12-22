@@ -24,6 +24,9 @@ gem 'carrierwave'
 # FOR FAKE DATA
 gem 'faker'
 
+# FOR GEOCODING
+gem 'geocoder'
+
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'
