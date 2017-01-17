@@ -1,10 +1,18 @@
 class FriendshipsController < ApplicationController
 
-
   def index
     @users = User.all
-    @friends = current_user.friends
+    # @friends = current_user.friends
+
+    @friends = []
+    current_user.friends.each do |friend|
+      if friend.friends.exists?(:id => current_user.id)
+        @friends << friend
+      end
+    end
+
   end
+
 
   def create
     @friendship = current_user.friendships.build(:friend_id => params[:friend_id])

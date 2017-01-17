@@ -3,12 +3,24 @@
     <div class="col-xs-12">
       <h2> Your Friends </h2>
       <ul>
+        <h2> non-reciprocal friendships </h2>
         <% current_user.friendships.each do |friendship| %>
         <li>
           <%= friendship.friend.first_and_last_name %>
           <%= link_to "remove", friendship_path(friendship), :method => :delete, class: "btn btn-primary" %>
         </li>
         <% end %>
+
+        <h2> reciprocal friendships </h2>
+
+        <% @friends.each do |friend| %>
+        <li>
+          <%= friend.first_and_last_name %>
+          <%= link_to "remove", friendship_path(current_user.friendships.find_by_friend_id(friend.id)), :method => :delete, class: "btn btn-primary" %>
+        </li>
+        <% end %>
+
+
       </ul>
     </div>
     <div class="col-xs-12">
