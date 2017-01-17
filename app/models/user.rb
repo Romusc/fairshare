@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :shares
   has_many :places
+  has_many :items
 
   # For friendship
   has_many :friendships

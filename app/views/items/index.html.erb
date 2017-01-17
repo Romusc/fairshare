@@ -28,7 +28,7 @@
               <td><%= share.user.first_name %> <%= share.user.last_name %></td>
               <td><%= share.percentage.round(0) %> %</td>
               <td><%= share.spent %> GBP</td>
-              <td><%= (((item.value)*(share.percentage/100)) - (share.spent)).round%> GBP </td>
+              <td><%= -(((item.value)*(share.percentage/100)) - (share.spent)).round%> GBP </td>
             </tr>
             <% end %>
           </tbody>

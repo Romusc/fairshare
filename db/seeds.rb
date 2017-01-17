@@ -100,14 +100,16 @@ User.all.each do |user|
       )
     item.remote_photo_url = i[1]
     item.save!
+    share_user = Share.new(user_id: user.id, item_id: item.id, spent: item.value)
+    share_user.save
     [0, 1, 2, 3].sample.times do
       share = Share.new(user_id: User.all.sample.id, item_id: item.id, spent: 0)
       share.save
     end
     shares = item.shares
     shares.each do |share|
-    share.percentage = (100 / (shares.count)).round(2)
-      share.save
+      share.percentage = (100 / (shares.count)).round(2)
+        share.save
     end
   end
 end
