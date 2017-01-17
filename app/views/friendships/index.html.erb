@@ -1,35 +1,34 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <h2> Your Friends </h2>
+      <h2> Your Friends (reciprocal friendships)</h2>
       <ul>
-        <h2> non-reciprocal friendships </h2>
-        <% current_user.friendships.each do |friendship| %>
-        <li>
-          <%= friendship.friend.first_and_last_name %>
-          <%= link_to "remove", friendship_path(friendship), :method => :delete, class: "btn btn-primary" %>
-        </li>
-        <% end %>
-
-        <h2> reciprocal friendships </h2>
-
         <% @friends.each do |friend| %>
         <li>
           <%= friend.first_and_last_name %>
-          <%= link_to "remove", friendship_path(current_user.friendships.find_by_friend_id(friend.id)), :method => :delete, class: "btn btn-primary" %>
+          <%= link_to "Remove", friendship_path(current_user.friendships.find_by_friend_id(friend.id)), :method => :delete, class: "btn btn-primary" %>
         </li>
         <% end %>
-
-
       </ul>
     </div>
     <div class="col-xs-12">
-      <h2> Those who have befriended you (friend requests) </h2>
+      <h2> Friend requests (Those who have befriended you) </h2>
       <ul>
-        <% current_user.inverse_friends.each do |inverse_friend| %>
+        <% @inverse_friends.each do |inverse_friend| %>
           <li>
             <%= inverse_friend.first_and_last_name %>
             <%= link_to "Accept Friendship", friendships_path(:friend_id => inverse_friend), :method => :post %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="col-xs-12">
+      <h2> Friend requests (Friends you have added but who haven't accepted yet) </h2>
+      <ul>
+        <% @friends_requested.each do |friend_requested| %>
+          <li>
+            <%= friend_requested.first_and_last_name %>
+            <%= link_to "Cancel request", friendship_path(current_user.friendships.find_by_friend_id(friend_requested.id)), :method => :delete, class: "btn btn-primary" %>
           </li>
         <% end %>
       </ul>
