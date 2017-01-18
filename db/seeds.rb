@@ -7,9 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Place.destroy_all
+Share.destroy_all
 Item.destroy_all
 User.destroy_all
-Share.destroy_all
+
 
 Faker::Config.locale = 'en-GB'
 
@@ -96,7 +97,8 @@ User.all.each do |user|
       name: i[0],
       description: (Faker::Lorem.sentence+" ")*[*3..10].sample,
       value: i[2],
-      user_id: user.id
+      user_id: user.id,
+      place_id: user.place.id
       )
     item.remote_photo_url = i[1]
     item.save!

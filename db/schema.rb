@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161222152145) do
+ActiveRecord::Schema.define(version: 20170118115714) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,8 @@ ActiveRecord::Schema.define(version: 20161222152145) do
     t.datetime "updated_at",  null: false
     t.string   "photo"
     t.integer  "user_id"
+    t.integer  "place_id"
+    t.index ["place_id"], name: "index_items_on_place_id", using: :btree
     t.index ["user_id"], name: "index_items_on_user_id", using: :btree
   end
 
@@ -85,6 +87,7 @@ ActiveRecord::Schema.define(version: 20161222152145) do
   end
 
   add_foreign_key "bookings", "shares"
+  add_foreign_key "items", "places"
   add_foreign_key "items", "users"
   add_foreign_key "places", "users"
   add_foreign_key "shares", "items"

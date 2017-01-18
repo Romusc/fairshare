@@ -13,6 +13,32 @@
         } else if (markers.length == 1) {
           handler.getMap().setZoom(14);
         }
+
+        <!-- added by me, not in the lesson about JS and google maps -->
+
+        markers.forEach(function(marker) {
+
+          var uluru = {lat: -25.363, lng: 131.044};
+
+          var infowindow = new google.maps.InfoWindow({
+            content: "hey it's me! Mario!"
+          });
+
+          var test = new google.maps.Marker({
+            position: uluru,
+            map: map,
+            title: 'Uluru (Ayers Rock)'
+          });
+
+          test.addListener('click', function() {
+            infowindow.open(map, marker);
+          });
+
+
+        })
+
+        <!-- end of added by me, not in the lesson about JS and google maps -->
+
       });
     });
   <% end %>
@@ -37,18 +63,30 @@
   <table class="table">
     <thead>
       <th> User </th>
+      <th> Postcode </th>
       <th> Ownership </th>
       <th> Spent </th>
       <th> Owed </th>
     </thead>
     <tbody>
       <% @item.shares.each do |share| %>
-      <tr>
-        <td><%= share.user.first_name %> <%= share.user.last_name %></td>
-        <td><%= share.percentage.round(0) %> %</td>
-        <td><%= share.spent %> GBP</td>
-        <td><%= -(((@item.value)*(share.percentage/100)) - (share.spent)).round%> GBP </td>
-      </tr>
+        <% if @item.place.postcode == share.user.place.postcode %>
+          <tr class="highlighted">
+            <td><%= share.user.first_name %> <%= share.user.last_name %></td>
+            <td><%= share.user.place.postcode %></td>
+            <td><%= share.percentage.round(0) %> %</td>
+            <td><%= share.spent %> GBP</td>
+            <td><%= -(((@item.value)*(share.percentage/100)) - (share.spent)).round%> GBP </td>
+          </tr>
+        <% else %>
+          <tr>
+            <td><%= share.user.first_name %> <%= share.user.last_name %></td>
+            <td><%= share.user.place.postcode %></td>
+            <td><%= share.percentage.round(0) %> %</td>
+            <td><%= share.spent %> GBP</td>
+            <td><%= -(((@item.value)*(share.percentage/100)) - (share.spent)).round%> GBP </td>
+          </tr>
+        <% end %>
       <% end %>
     </tbody>
   </table>

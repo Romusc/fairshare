@@ -11,10 +11,10 @@ class ItemsController < ApplicationController
 
   def show
     @shares = @item.shares
-    @places = []
-    @shares.each do |share|
-      @places << share.user.places.first
-    end
+    # @places = []
+    # @shares.each do |share|
+    #   @places << share.user.places.first
+    # end
     @hash = Gmaps4rails.build_markers(@places) do |place, marker|
       marker.lat place.latitude
       marker.lng place.longitude

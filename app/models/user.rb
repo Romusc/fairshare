@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :shares
-  has_many :places
+  has_one :place
   has_many :items
 
   # For friendship
