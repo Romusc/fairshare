@@ -54,7 +54,16 @@
       <%= javascript_tag do %>
         $(document).ready(function() {
           var handler = Gmaps.build('Google');
-          handler.buildMap({ internal: { id: 'map' } }, function() {
+          handler.buildMap({
+            provider: {
+              disableDefaultUI: false,
+              <!-- add google maps options here -->
+            },
+            internal: {
+              id: 'map'
+            }
+          },
+          function() {
             markers = handler.addMarkers(<%= raw @hash.to_json %>);
             handler.bounds.extendWith(markers);
             handler.fitMapToBounds();
@@ -63,33 +72,10 @@
             } else if (markers.length == 1) {
               handler.getMap().setZoom(14);
             }
-
-            <!-- added by me, not in the lesson about JS and google maps -->
-
-            markers.forEach(function(marker) {
-
-              var uluru = {lat: -25.363, lng: 131.044};
-
-              var infowindow = new google.maps.InfoWindow({
-                content: "hey it's me! Mario!"
-              });
-
-              var test = new google.maps.Marker({
-                position: uluru,
-                map: map,
-                title: 'Uluru (Ayers Rock)'
-              });
-
-              test.addListener('click', function() {
-                infowindow.open(map, marker);
-              });
-
-
-            })
-
-            <!-- end of added by me, not in the lesson about JS and google maps -->
-
           });
+          <!--  -->
+
+          <!--  -->
         });
       <% end %>
     <% end %>
