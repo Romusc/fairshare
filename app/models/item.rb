@@ -3,4 +3,8 @@ class Item < ApplicationRecord
   belongs_to :user
   belongs_to :place
   mount_uploader :photo, PhotoUploader
+  validates :name, presence: true
+  validates :value, presence: true
+  # validates :photo, presence: true
+  # validates :description, allow_nil: true
 end

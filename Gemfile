@@ -35,6 +35,11 @@ end
 
 
 group :development, :test do
+  gem 'capybara'
+  gem 'poltergeist'
+  gem 'launchy'
+  gem 'minitest-reporters'
+
   gem 'binding_of_caller'
   gem 'better_errors'
 

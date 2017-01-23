@@ -23,18 +23,20 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @users = User.all
+    @friends = current_user.friends
     @item = Item.new
   end
 
   def create
     @item = Item.new(item_params)
     @item.user_id = current_user.id
+    @item.place = current_user.place
     if @item.save
       Share.create!(user_id: current_user.id, percentage: 100, item_id: @item.id,
         spent: @item.value)
       redirect_to new_item_share_path(@item)
     else
+      flash[:notice] = "Invalid - try again"
       render :new
     end
   end
@@ -51,7 +53,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :description, :value, :photo)
+    params.require(:item).permit(:name, :description, :value, :photo, :place, :photo_cache)
   end
 
   def set_item

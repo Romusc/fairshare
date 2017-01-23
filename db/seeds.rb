@@ -89,7 +89,7 @@ Place.create!(
   city: "London",
   )
 
-15.times do
+30.times do
   photo = photos.sample
   user = User.create!(
     email: Faker::Internet.free_email,
@@ -134,4 +134,11 @@ User.all.each do |user|
         share.save
     end
   end
+
+  [1, 2, 3, 4, 5, 6, 7, 8].sample.times do
+    friend = User.all.sample
+    friendship = Friendship.create!(user_id: user.id, friend_id: friend.id)
+    friendship = Friendship.create!(user_id: friend.id, friend_id: user.id)
+  end
+
 end
