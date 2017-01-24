@@ -1,20 +1,22 @@
 language: ruby
-
 sudo: false
-
 cache:
   directories:
-    - "travis_phantomjs"
-
+  - travis_phantomjs
 before_script:
-  - psql -c 'create database fairshare_test;' -U postgres
-
+- psql -c 'create database fairshare_test;' -U postgres
 before_install:
-  # Adding phantomJS to Travis
-  - "phantomjs --version"
-  - "export PATH=$PWD/travis_phantomjs/phantomjs-2.1.1-linux-x86_64/bin:$PATH"
-  - "phantomjs --version"
-  - "if [ $(phantomjs --version) != '2.1.1' ]; then rm -rf $PWD/travis_phantomjs; mkdir -p $PWD/travis_phantomjs; fi"
-  - "if [ $(phantomjs --version) != '2.1.1' ]; then wget https://assets.membergetmember.co/software/phantomjs-2.1.1-linux-x86_64.tar.bz2 -O $PWD/travis_phantomjs/phantomjs-2.1.1-linux-x86_64.tar.bz2; fi"
-  - "if [ $(phantomjs --version) != '2.1.1' ]; then tar -xvf $PWD/travis_phantomjs/phantomjs-2.1.1-linux-x86_64.tar.bz2 -C $PWD/travis_phantomjs; fi"
-  - "phantomjs --version"
+- phantomjs --version
+- export PATH=$PWD/travis_phantomjs/phantomjs-2.1.1-linux-x86_64/bin:$PATH
+- phantomjs --version
+- if [ $(phantomjs --version) != '2.1.1' ]; then rm -rf $PWD/travis_phantomjs; mkdir
+  -p $PWD/travis_phantomjs; fi
+- if [ $(phantomjs --version) != '2.1.1' ]; then wget https://assets.membergetmember.co/software/phantomjs-2.1.1-linux-x86_64.tar.bz2
+  -O $PWD/travis_phantomjs/phantomjs-2.1.1-linux-x86_64.tar.bz2; fi
+- if [ $(phantomjs --version) != '2.1.1' ]; then tar -xvf $PWD/travis_phantomjs/phantomjs-2.1.1-linux-x86_64.tar.bz2
+  -C $PWD/travis_phantomjs; fi
+- phantomjs --version
+env:
+  matrix:
+  - secure: JkHcLpnqxtZDDKTHFOOEIzO++X/4lzzp7tPfPp3w+MehPKv1kezgByt60yWatEMFtpshPNta8s7wcxonzitlKJAObukUEa+MRFGJsJ3i+xSNK3VEFUMtn4I+whAJLctsH7oDiafUB4AzFLuQbvFxj8YfWqIUdjHfeu4phqlTGSKyodwTTwitCJUVMuz8MzGa6khcPQAz5vfhpIVUznqq1d+hLjGa0SmSXiLzHjKRbBOfRBrNVThqqv7ECMaqsOgde4j74ToP5n9XeVxD7XxwsAx1YNmZktYlKXiBExqa3AXMKi50OYdCdAWYS6pniiyJ83y/VB4EQDWK/qauEB+7ff2vA/F+aVt1PzhKGuu7dHnXCkTINb8G4CYHVWo8QN23osvsDL4lNglCChQcaaR7SNytgCMJK/djPdj7JXWcDGd9YdSOW0uGU1DS6KAjis0cjm1+aUXR72+3+TI3uADjlatpxlrHaOvi1UjK2L3OwQnOA8B3VR/C4xb2/vxLRPNHTZ8rAX3E4mqschPvszBftQY3g3umSk643szu7/qYotidO0F+ZS3PLKK/NPZ6hULM8qFD2SXdkPia3a6PIptxONKsshf6vOSoXWfvqJgJ1QXtjt+q+1d0FSY4zV94IS7xG4pEIzB0pP9PrHYDy5IJum4OPagbwpHGs4hKxZsHeXo=
+  - secure: kNFkMnWMrfNkmyT2Ji7Ix/4Ax036eRZHsxeidzC41G235AUHwmzUO2Te6Kbtdwt850p8zXx9LxM394Ut+d/+R3/B4xp9Dj/ZTJ7xbF7OsZm6RduD0dQ0hVYY+rHd/YpHGuPC7YSdQMhGUOg1M2QRglFGx8PUJAaQeqULZwzOlH/sTlVTI4kVJtwg+eXO1qincahRb2ZJKNMpySGhaWA9C0b/BJPOkQIMXXp02i5/07vV7+eOxEuffWR66FgZydGNRgdavz/dARWNYC8addNYpiZ8QVmJqgEzXRnkfYSxGiV7mu4hNBY/TkQ8pKaENAWYcdAKho161gCGzP005cZ+BmczyHobR5KQyBPm5DqOrhYX2o2VNMm+YZaDsE1ORF6/GpAhl4ccpellkDTJC4FkdJkcXeqL41fMnxgcPJamXzqkZwZnq49ETTVIek4UCtWbBe2d0wJ6UpuVtLIMd8w5hqIp6XtltZUq8BbfzMmNm+RWq1ukoLi0SXwEOrihGovfGUGRm8F2VkNvf/8WOtEVpId7ZgxKZ1wD4VGXK6RxaSF56WGGPtaMcfg4IWTB4aRejNWJtW0yntkg039lc9kboMDeYo7iIbtEEk+fJjtu84Ncw4hvFro8JRRrwlJi4di3IOCbmOaUTnV1Jc5o6nQiWfmDv6zv5d5GE/7sqcmM0jc=
