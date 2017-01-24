@@ -7,7 +7,7 @@ class HomeTest < ActionDispatch::IntegrationTest
     # exercise
     visit "/"
 
-    puts page.body
+    # puts page.body
 
     # verify
     assert_equal 200, page.status_code
