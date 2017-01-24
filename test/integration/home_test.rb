@@ -3,6 +3,8 @@ require 'test_helper'
 class HomeTest < ActionDispatch::IntegrationTest
   test "loads correctly" do
     # setup
+    login_as users(:romu)
+
 
     # exercise
     visit "/"
