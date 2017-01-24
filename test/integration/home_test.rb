@@ -3,11 +3,11 @@ require 'test_helper'
 class HomeTest < ActionDispatch::IntegrationTest
   test "loads correctly" do
     # setup
-    login_as users(:romu)
-
 
     # exercise
     visit "/"
+
+    puts page.body
 
     # verify
     assert_equal 200, page.status_code
