@@ -8,7 +8,6 @@ class HomeTest < ActionDispatch::IntegrationTest
     visit "/"
 
     # verify
-    assert_equal 200, page.status_code
     assert page.has_content?("Items")
     assert page.has_selector?(".item", count: Item.count)
 
