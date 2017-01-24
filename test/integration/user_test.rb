@@ -6,5 +6,3 @@ class UserTest < ActiveSupport::TestCase
     assert_equal "John Lennon", user.first_and_last_name
   end
 end
-
-# random

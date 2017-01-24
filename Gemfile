@@ -35,9 +35,12 @@ end
 
 
 group :development, :test do
+  # THOSE TWO ALLOW TO SIMULATE A NAVIGATOR (INTEGRATION TESTING) - POLTERGEIST REQUIRSS FIRST A "brew install phantomjs"
   gem 'capybara'
   gem 'poltergeist'
+  # ALLOWS TO GENERATE NAVIGATION PREVIEW SCREENSHOTS
   gem 'launchy'
+  # COLORS TESTS IN THE TERMINAL
   gem 'minitest-reporters'
 
   gem 'binding_of_caller'

@@ -23,5 +23,6 @@
   require 'capybara/poltergeist'
   Capybara.default_driver = :poltergeist
 
+  # FOR DEVISER TO WORK WITH TESTS
   include Warden::Test::Helpers
   Warden.test_mode!
