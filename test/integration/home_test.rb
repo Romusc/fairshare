@@ -7,6 +7,8 @@ class HomeTest < ActionDispatch::IntegrationTest
     # exercise
     visit "/"
 
+    save_and_open_screenshot
+
     # verify
     assert_equal 200, page.status_code
     assert page.has_content?("Items")
