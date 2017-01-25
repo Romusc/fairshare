@@ -14,4 +14,20 @@ class ItemTest < ActionDispatch::IntegrationTest
     assert_equal 200, page.status_code
     # assert page.has_content?("Add a friend sharing ownership of this item with you")
   end
+
+  test "shows a user list of items" do
+    login_as users(:romu)
+    visit "/items"
+    save_and_open_page
+    assert page.has_content?("My Fairshares")
+    assert page.has_selector?(".navbar-wagon")
+  end
+
+  test "shows a specific item details" do
+    login_as users(:romu)
+    visit "/items"
+    # save_and_open_page
+
+    assert page.has_selector?(".navbar-wagon")
+  end
 end
