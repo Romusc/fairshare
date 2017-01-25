@@ -5,6 +5,5 @@ class Item < ApplicationRecord
   mount_uploader :photo, PhotoUploader
   validates :name, presence: true
   validates :value, presence: true
-  # validates :photo, presence: true
-  # validates :description, allow_nil: true
+  validates :photo, presence: true
 end

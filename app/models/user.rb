@@ -6,14 +6,13 @@ class User < ApplicationRecord
 
   mount_uploader :photo, PhotoUploader
 
-  has_many :shares
-  has_one :place
+  has_many :shares, dependent: :destroy
+  has_one :place, dependent: :destroy
   has_many :items
 
-  # For friendship
-  has_many :friendships
+  # FOR FRIENDSHIPS
+  has_many :friendships, dependent: :destroy
   has_many :friends, :through => :friendships
-
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
   has_many :inverse_friends, :through => :inverse_friendships, :source => :user
 
