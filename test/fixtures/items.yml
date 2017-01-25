@@ -1,3 +1,5 @@
 table:
-  name: "Table"
-  value: 2
+  user: romu
+  name: table
+  value: 200.0
+
