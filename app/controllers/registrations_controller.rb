@@ -1,5 +1,19 @@
 class RegistrationsController < Devise::RegistrationsController
 
+
+  def show
+    @user = User.find(params[:id])
+    @friends = []
+    @user.friends.each do |friend|
+      if friend.in?(current_user.friends)
+        @friends.unshift(friend)
+      else
+        @friends << friend
+      end
+    end
+    @shares = @user.shares[0..5]
+  end
+
   def edit
     @place = current_user.place
   end

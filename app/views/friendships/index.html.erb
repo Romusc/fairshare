@@ -1,15 +1,17 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <h2> Your Friends (reciprocal friendships)</h2>
-      <ul>
+      <h2>Your Friends.</h2>
         <% @friends.each do |friend| %>
-        <li>
-          <%= friend.first_and_last_name %>
-          <%= link_to "Remove", friendship_path(current_user.friendships.find_by_friend_id(friend.id)), :method => :delete, class: "btn btn-primary" %>
-        </li>
+          <div class="col-sm-2 col-xs-6 padded2 card-friend">
+            <a href="user/<%=friend.id%>">
+              <div class="col-xs-12">
+                <%= image_tag friend.photo, class: "avatar-large"%>
+              </div>
+              <h4 class="col-xs-12"><%= friend.first_name %></h4>
+            </a>
+          </div>
         <% end %>
-      </ul>
     </div>
     <div class="col-xs-12">
       <h2> Friend requests (Those who have befriended you) </h2>
@@ -44,3 +46,5 @@
     </div>
   </div>
 </div>
+
+<!-- "Remove", friendship_path(current_user.friendships.find_by_friend_id(friend.id)), :method => :delete, class: "btn btn-primary"" %>" -->

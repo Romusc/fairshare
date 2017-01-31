@@ -42,3 +42,13 @@
 .card-link:hover{
   opacity: 0.1;
 }
+
+.card-friend {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.card-friend-name {
+  display: inline-block;
+}
