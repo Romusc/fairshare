@@ -19,7 +19,7 @@ class ItemTest < ActionDispatch::IntegrationTest
     login_as users(:romu)
     visit "/items"
     save_and_open_page
-    assert page.has_content?("My Fairshares")
+    assert page.has_content?("My Shares")
     assert page.has_selector?(".navbar-wagon")
   end
 
