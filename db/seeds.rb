@@ -16,17 +16,14 @@ User.destroy_all
 Faker::Config.locale = 'en-GB'
 
 photos = [
-"https://s-media-cache-ak0.pinimg.com/736x/f5/a0/62/f5a0626a80fe6026c0ac65cdc2d8ede2.jpg",
-"https://s-media-cache-ak0.pinimg.com/736x/cd/90/d9/cd90d9de63fa2c8e5c5e7117e27b5c18.jpg",
-"https://s-media-cache-ak0.pinimg.com/736x/8f/b0/77/8fb077e97b62cfab2a4dec108ac7112f.jpg",
-"https://s-media-cache-ak0.pinimg.com/originals/ef/83/60/ef83604a2bedd8043ccc2fe56fed3bc7.jpg",
-"http://www.dannyst.com/blogimg/gallery-portraits-of-strangers-11.jpg",
-"http://newshour.s3.amazonaws.com/photos/2011/01/05/Obama_slide_slideshow.jpg",
-"http://digital-photography-school.com/wp-content/uploads/2007/08/portrait-mode.jpg",
-"https://www.ephotozine.com/articles/xxxx-portrait-photography-tutorials-26944/images/street_photography_portrait.jpg",
-"https://static.bhphotovideo.com/explora/sites/default/files/styles/960/public/dof1.jpg?itok=5wIDlC1d",
-"http://www.npg.org.uk/assets/microsites/TWPPP2015/images/800_2015_1481new.jpg",
-"https://s-media-cache-ak0.pinimg.com/736x/0f/e8/7c/0fe87c56f5f5c7e29422868495725010.jpg"]
+"http://www.stmichaelsplaygrouplouth.co.uk/images/potrait.jpg",
+"http://www.hereiwalk.org/wp-content/uploads/2010/04/ALW_100611_Self-Portrait-Square-1020386.jpg",
+"http://uplandsoftware.com/wp-content/uploads/2013/04/005_McDonald_BrendaLaddPHOTO_5x7SQUARE1-300x300.jpg",
+"http://bennyhill.co.uk/wp-content/uploads/2016/08/2752714_orig-square-300x300.jpg",
+"https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/circuitstickers-portrait-kawahara-square.jpg",
+"https://www.asle.org/wp-content/uploads/portrait_monani_square.jpg",
+"http://mhminsight.com/images/ellinor-james-square-spT2-6990-ls-slate.jpg",
+"http://www.greenergrass.company/wp-content/uploads/2016/03/portrait-square.png"]
 
 items = [
 ['Drone', 'https://static.pexels.com/photos/53903/pexels-photo-53903.jpeg', 1500],
