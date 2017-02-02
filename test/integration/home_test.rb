@@ -8,9 +8,9 @@ class HomeTest < ActionDispatch::IntegrationTest
     visit "/"
 
     # verify
-    save_and_open_page
     assert_equal 200, page.status_code
-    # assert page.has_selector?(".item", count: Item.count)
+    assert page.has_content?("Items"), ["The word 'Items' is not present"]
+    assert page.has_selector?(".item", count: Item.count)
 
 
     # teardown
