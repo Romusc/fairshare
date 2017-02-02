@@ -115,9 +115,10 @@ User.all.each do |user|
       description: (Faker::Lorem.sentence+" ")*[*3..10].sample,
       value: i[2],
       user_id: user.id,
-      place_id: user.place.id
+      place_id: user.place.id,
+      remote_photo_url: i[1]
       )
-    item.remote_photo_url = i[1]
+    # item.remote_photo_url = i[1]
     item.save!
     share_user = Share.new(user_id: user.id, item_id: item.id, spent: item.value)
     share_user.save
@@ -134,8 +135,8 @@ User.all.each do |user|
 
   [1, 2, 3, 4, 5, 6, 7, 8].sample.times do
     friend = User.all.sample
-    friendship = Friendship.create!(user_id: user.id, friend_id: friend.id)
-    friendship = Friendship.create!(user_id: friend.id, friend_id: user.id)
+    friendship = Friendship.create(user_id: user.id, friend_id: friend.id)
+    friendship = Friendship.create(user_id: friend.id, friend_id: user.id)
   end
 
 end

@@ -19,7 +19,7 @@ gem 'autoprefixer-rails'
 
 # FOR IMAGES
 gem 'cloudinary', '1.1.0'
-gem 'carrierwave'
+gem 'carrierwave', '0.11.2'
 
 # FOR FAKE DATA
 gem 'faker'
