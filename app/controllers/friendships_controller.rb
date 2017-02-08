@@ -30,7 +30,7 @@ class FriendshipsController < ApplicationController
 
   def create
     @friendship = current_user.friendships.build(:friend_id => params[:friend_id])
-    if @friendship.save
+    if @friendship.save!
       flash[:notice] = "Added #{User.find_by_id(params[:friend_id]).first_and_last_name} as a friend."
       redirect_to friendships_path
     else

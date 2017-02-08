@@ -34,6 +34,14 @@ source 'https://rails-assets.org' do
 end
 
 
+# FOR REACTJS
+gem 'js-routes', '~> 1.3'
+gem 'react-rails', '~> 1.8'
+source 'https://rails-assets.org' do
+  gem 'rails-assets-classnames'
+end
+
+
 group :development, :test do
   # THOSE TWO ALLOW TO SIMULATE A NAVIGATOR (INTEGRATION TESTING) - POLTERGEIST REQUIRES FIRST A "brew install phantomjs"
   gem 'capybara'

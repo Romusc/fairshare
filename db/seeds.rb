@@ -118,7 +118,6 @@ User.all.each do |user|
       place_id: user.place.id,
       remote_photo_url: i[1]
       )
-    # item.remote_photo_url = i[1]
     item.save!
     share_user = Share.new(user_id: user.id, item_id: item.id, spent: item.value)
     share_user.save
