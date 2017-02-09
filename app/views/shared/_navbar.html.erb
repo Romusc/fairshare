@@ -42,6 +42,7 @@
                 <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: " Log out") %>
               <% end %>
             </li>
+
           </ul>
         </div>
       </div>
@@ -54,8 +55,11 @@
     <% end %>
 
     <!-- Button (call-to-action) -->
-    <%= link_to t(".top_call_to_action", default: "My Shares"), items_path, class: "navbar-wagon-item navbar-wagon-button btn" %>
+    <%= link_to t(".top_call_to_action", default: "My Shares"), shares_path, class: "navbar-wagon-item navbar-wagon-button btn" %>
+        <%= link_to t(".top_call_to_action", default: "Browse"), items_path, class: "navbar-wagon-item navbar-wagon-button btn" %>
   </div>
+
+
 
   <!-- Dropdown list appearing on mobile only -->
   <div class="navbar-wagon-item hidden-md hidden-lg">

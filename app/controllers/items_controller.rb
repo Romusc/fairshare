@@ -2,15 +2,15 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show]
 
   def index
-    @shares = current_user.shares
-    @items = []
-    @shares.each do |share|
-      @items << Item.find_by_id(share.item_id)
-    end
+    @items = Item.all
   end
 
   def show
-    @shares = @item.shares
+    if @item.shares & current_user.shares == []
+      @shares = []
+    else
+      @shares = @item.shares
+    end
     @places = []
     @shares.each do |share|
       @places << share.user.place

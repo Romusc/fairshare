@@ -8,6 +8,14 @@ class SharesController < ApplicationController
     @share = Share.new(item_id: @item.id)
   end
 
+  def index
+    @shares = current_user.shares
+    @items = []
+    @shares.each do |share|
+      @items << Item.find_by_id(share.item_id)
+    end
+  end
+
   def create
     @share = Share.new(item_id: params[:item_id], user_id: share_params[:user_id], spent: 0)
     if @share.save

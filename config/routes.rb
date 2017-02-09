@@ -11,8 +11,11 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   resources :items, only: [:show, :new, :create, :index, :edit, :update] do
-    resources :shares, only: [:index,:new, :create, :update]
+    resources :shares, only: [:new, :create, :update]
   end
+
+  resources :shares, only: [:index]
+
 
   resources :places
 

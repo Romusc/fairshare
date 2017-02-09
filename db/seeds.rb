@@ -138,4 +138,6 @@ User.all.each do |user|
     friendship = Friendship.create(user_id: friend.id, friend_id: user.id)
   end
 
+  # MAYBE SEED SOME UPVOTES?
+
 end

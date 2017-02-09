@@ -11,7 +11,7 @@
     <% @items.each do |item| %>
     <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 padded2">
 
-      <div class="card" href="www.google.com" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path item.photo, height: 280, width: 318, crop: :scale %>)">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path item.photo, height: 280, width: 318, crop: :scale %>)">
 
         <div class="card-description">
           <div class="col-xs-12">

@@ -41,6 +41,9 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-classnames'
 end
 
+# FOR ITEM LIKES
+gem 'acts_as_votable'
+
 
 group :development, :test do
   # THOSE TWO ALLOW TO SIMULATE A NAVIGATOR (INTEGRATION TESTING) - POLTERGEIST REQUIRES FIRST A "brew install phantomjs"
