@@ -44,6 +44,10 @@ end
 # FOR ITEM LIKES
 gem 'acts_as_votable'
 
+# FOR RAILS ADMIN
+gem 'remotipart', github: 'mshibuya/remotipart'
+gem 'rails_admin', '>= 1.0.0.rc'
+
 
 group :development, :test do
   # THOSE TWO ALLOW TO SIMULATE A NAVIGATOR (INTEGRATION TESTING) - POLTERGEIST REQUIRES FIRST A "brew install phantomjs"
