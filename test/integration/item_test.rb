@@ -18,7 +18,7 @@ class ItemTest < ActionDispatch::IntegrationTest
   test "shows a user list of items" do
     login_as users(:romu)
     visit "/items"
-    save_and_open_page
+    save_and_open_screenshot
     assert page.has_content?("My Shares")
     assert page.has_selector?(".navbar-wagon")
   end
