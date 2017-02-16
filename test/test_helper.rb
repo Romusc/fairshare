@@ -26,3 +26,8 @@
   # FOR DEVISER TO WORK WITH TESTS
   include Warden::Test::Helpers
   Warden.test_mode!
+
+  # SHOULD SOLVE THE CAPYBARA POLTERGEIST STATUS FAIL ERROR (Try!)
+  Capybara.register_driver :poltergeist do |app|
+    Capybara::Poltergeist::Driver.new(app, timeout: 1.minute, phantomjs_options: ['--load-images=no'])
+  end
