@@ -1,49 +1,67 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <h2>Your Friends.</h2>
-        <% @friends.each do |friend| %>
-          <div class="col-sm-2 col-xs-6 padded2 card-friend">
+      <h2>Friends</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <% @friends.each do |friend| %>
+        <div class="row">
+          <div class="col-sm-3 col-xs-6 padded2 card-friend">
             <a href="user/<%=friend.id%>">
               <div class="col-xs-12">
                 <%= image_tag friend.photo, class: "avatar-large"%>
               </div>
-              <h4 class="col-xs-12"><%= friend.first_name %></h4>
+              <h6 class="col-xs-12"><%= friend.first_name %></h6>
             </a>
           </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="row well">
+    <div class="col-xs-12 col-sm-6">
+      <!-- Friend requests (Those who have befriended you) -->
+      <% @inverse_friends.each do |inverse_friend| %>
+        <div class="col-xs-10">
+          <p><a href="user/<%=inverse_friend.id%>"><%= inverse_friend.first_and_last_name %></a> has sent you a friend request
+        </div>
+        <div class="col-xs-2">
+          <%= link_to "Accept", friendships_path(:friend_id => inverse_friend), :method => :post, class: "btn-sm btn-success" %></p>
+        </div>
         <% end %>
     </div>
-    <div class="col-xs-12 well">
-      <div class="col-xs-6">
-        <!-- Friend requests (Those who have befriended you) -->
-          <% @inverse_friends.each do |inverse_friend| %>
-              <p><a href="user/<%=inverse_friend.id%>"><%= inverse_friend.first_and_last_name %></a> has sent you a friend request
-              <%= link_to "Accept", friendships_path(:friend_id => inverse_friend), :method => :post, class: "btn-sm btn-success" %></p>
-          <% end %>
-      </div>
-      <div class="col-xs-6">
-        <!-- Friend requests (Friends you have added but who haven't accepted yet) -->
-          <% @friends_requested.each do |friend_requested| %>
-              <p> You have sent a friend request
-              to <a href="user/<%=friend_requested.id%>"><%=friend_requested.first_and_last_name%></a>
-              <%= link_to "Cancel", friendship_path(current_user.friendships.find_by_friend_id(friend_requested.id)), :method => :delete, class: "btn-sm btn-danger" %></p>
-          <% end %>
-      </div>
-    </div>
-    <div class="col-xs-12">
-      <h2>Add new friends</h2>
-      <% @users.each do |user| %>
-          <div class="col-sm-2 col-xs-6 padded2 card-friend">
-            <a href="user/<%=user.id%>">
-              <div class="col-xs-12">
-                <%= image_tag user.photo, class: "avatar-large"%>
-              </div>
-              <h4 class="col-xs-12"><%= user.first_and_last_name %></h4></a>
-              <%= link_to "Add", friendships_path(:friend_id => user), :method => :post, class: "btn-sm btn-primary" %>
-          </div>
+    <div class="col-xs-12 col-sm-6">
+      <!-- Friend requests (Friends you have added but who haven't accepted yet) -->
+      <% @friends_requested.each do |friend_requested| %>
+        <div class="col-xs-10">
+          <p> You have sent a friend request
+          to <a href="user/<%=friend_requested.id%>"><%=friend_requested.first_and_last_name%></a>
+        </div>
+        <div class="col-xs-2">
+          <%= link_to "Cancel", friendship_path(current_user.friendships.find_by_friend_id(friend_requested.id)), :method => :delete, class: "btn-sm btn-danger" %></p>
+        </div>
         <% end %>
     </div>
   </div>
-</div>
+  <div class="row">
+    <div class="col-xs-12">
+      <h2>Add new friends</h2>
+      <% @users.each do |user| %>
+        <div class="col-sm-3 col-xs-6 padded2 card-friend">
+          <a href="user/<%=user.id%>">
+            <div class="col-xs-12">
+              <%= image_tag user.photo, class: "avatar-large"%>
+            </div>
+            <div class="col-xs-12">
+              <%= user.first_and_last_name %>
+            </div>
+          </a>
+            <%= link_to "Add", friendships_path(:friend_id => user), :method => :post, class: "btn-sm btn-default" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 
-<!-- "Remove", friendship_path(current_user.friendships.find_by_friend_id(friend.id)), :method => :delete, class: "btn btn-primary"" %>" -->
+      <!-- "Remove", friendship_path(current_user.friendships.find_by_friend_id(friend.id)), :method => :delete, class: "btn btn-primary"" %>" -->
