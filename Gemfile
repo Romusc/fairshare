@@ -48,6 +48,9 @@ gem 'acts_as_votable'
 gem 'remotipart', github: 'mshibuya/remotipart'
 gem 'rails_admin', '>= 1.0.0.rc'
 
+# FOR FACEBOOK CONNECT
+gem 'omniauth-facebook'
+
 
 group :development, :test do
   # THOSE TWO ALLOW TO SIMULATE A NAVIGATOR (INTEGRATION TESTING) - POLTERGEIST REQUIRES FIRST A "brew install phantomjs"

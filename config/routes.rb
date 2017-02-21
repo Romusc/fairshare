@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  devise_for :users, :controllers => { registrations: 'registrations' }
+  devise_for :users, :controllers => { omniauth_callbacks: 'users/omniauth_callbacks' }
 
+  # devise_for :users, :controllers => { registrations: 'registrations' }
 
   devise_scope :user do
     get "/user/:id" => 'registrations#show'
@@ -21,4 +22,5 @@ Rails.application.routes.draw do
   resources :places
 
   resources :friendships
+
 end
