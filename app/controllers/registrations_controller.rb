@@ -1,6 +1,4 @@
 class RegistrationsController < Devise::RegistrationsController
-
-
   def show
     @user = User.find(params[:id])
     @friends = []
@@ -19,7 +17,6 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def update
-    puts "HELLO!"
     current_user.update(account_update_params)
     puts current_user
     current_user.save

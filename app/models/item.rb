@@ -9,6 +9,14 @@ class Item < ApplicationRecord
 
   # FOR ITEM PICTURE
   mount_uploader :photo, PhotoUploader
+
   # FOR BEING VOTABLE BY USER
   acts_as_votable
+
+  # CONSTANT TO ACCESS LATER
+  CATEGORIES = ['Sports', 'Music', 'Outdoor', 'Other', 'Tech', 'Games', 'Books']
+
+  def self.search(category)
+    @items = Item.where("category LIKE ?", "%#{category}%")
+  end
 end

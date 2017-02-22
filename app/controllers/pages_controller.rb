@@ -3,5 +3,6 @@ class PagesController < ApplicationController
 
   def home
     @items = Item.all
+    @item = Item.new
   end
 end

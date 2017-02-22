@@ -9,7 +9,20 @@
     </div>
   </div>
   <div class="row">
-    <%= link_to "New Item", new_item_path %>
+    <div class="col-xs-10", style="display:inline">
+      <div class="col-xs-4">
+        <p>I'm interested in this type of item</p>
+      </div>
+      <div class="col-xs-5 search-box form-inline">
+      <%= simple_form_for @item, :url => items_path, :method => :get do |f|%>
+        <%= f.input :category, :prompt => "Anything!", label: false, collection: Item::CATEGORIES %>
+        <%= f.submit "Show me what you got!" %>
+      <% end %>
+      </div>
+    </div>
+    <div class="col-xs-2">
+      <%= link_to "New Item", new_item_path, class: "btn btn-primary" %>
+    </div>
   </div>
   <div class="row">
     <% @items.each do |item| %>
