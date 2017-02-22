@@ -21,6 +21,8 @@ class ItemsController < ApplicationController
       marker.lng place.longitude
       marker.infowindow "#{place.address} #{place.postcode} #{place.city}"
     end
+    @bookings = @item.bookings
+    @booking = Booking.new
   end
 
   def new

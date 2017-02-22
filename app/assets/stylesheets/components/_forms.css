@@ -6,8 +6,25 @@
   box-shadow: none;
 }
 
-.form-input:focus {
+
+
+
+/* OVERRIDING BOOTSTRAP FORM-CONTROL WITH FORM-INPUT.
+WORTH ASKING ARTHUR HOW TO OVERRIDE IT AND WHETHER IT'S THE BEST WAY TO DO IT */
+
+/*.form-control.form-input:active {
   font-color: #FAFAFA;
   border-bottom: 1px solid #FAFAFA;
   box-shadow: none;
+  width: 50%;
 }
+
+.form-control.form-input:focus {
+  font-color: #FAFAFA;
+  border-bottom: 1px solid #FAFAFA;
+  box-shadow: none;
+  width: 50%;
+}
+
+
+*/

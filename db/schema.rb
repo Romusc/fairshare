@@ -10,18 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170222112636) do
+ActiveRecord::Schema.define(version: 20170222171714) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "bookings", force: :cascade do |t|
-    t.integer  "share_id"
-    t.date     "start_date"
-    t.date     "end_date"
+    t.date     "start_time"
+    t.date     "end_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["share_id"], name: "index_bookings_on_share_id", using: :btree
+    t.integer  "item_id"
+    t.integer  "user_id"
+    t.index ["item_id"], name: "index_bookings_on_item_id", using: :btree
+    t.index ["user_id"], name: "index_bookings_on_user_id", using: :btree
   end
 
   create_table "friendships", force: :cascade do |t|
@@ -109,7 +111,8 @@ ActiveRecord::Schema.define(version: 20170222112636) do
     t.index ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope", using: :btree
   end
 
-  add_foreign_key "bookings", "shares"
+  add_foreign_key "bookings", "items"
+  add_foreign_key "bookings", "users"
   add_foreign_key "items", "places"
   add_foreign_key "items", "users"
   add_foreign_key "places", "users"

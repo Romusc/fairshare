@@ -1,3 +1,4 @@
 class Booking < ApplicationRecord
-  belongs_to :share
+  belongs_to :item
+  belongs_to :user
 end

@@ -33,7 +33,6 @@ source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
 end
 
-
 # FOR REACTJS
 gem 'js-routes', '~> 1.3'
 gem 'react-rails', '~> 1.8'
@@ -50,6 +49,9 @@ gem 'rails_admin', '>= 1.0.0.rc'
 
 # FOR FACEBOOK CONNECT
 gem 'omniauth-facebook'
+
+# FOR CALENDAR BOOKINGS
+gem "simple_calendar", "~> 2.0"
 
 
 group :development, :test do

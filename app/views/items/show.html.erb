@@ -1,5 +1,3 @@
-
-
 <div class="container">
   <div class="row">
     <br>
@@ -52,41 +50,66 @@
           <% end %>
       </div>
     </div>
-    <% if @shares != [] %>
-      <div id="map" style="width: 100%; height: 500px;"></div>
-      <% content_for(:after_js) do %>
-        <%= javascript_tag do %>
-          $(document).ready(function() {
-            var handler = Gmaps.build('Google');
-            handler.buildMap({
-              provider: {
-                disableDefaultUI: false,
-                <!-- add google maps options here -->
+  <div class="row">
+    <div class="col-xs-12 col-sm-6">
+      <h2>Bookings</h2>
+      <div class="col-xs-12">
+        <h3>New booking</h3>
+          <%= simple_form_for [@item, @booking], :url => item_bookings_path(@item), :method => :post do |f| %>
+            <%= f.input :start_time %>
+            <%= f.input :end_time %>
+            <%= f.submit %>
+          <% end %>
+        <h3>Calendar</h3>
+        <%= month_calendar events: @bookings do |date, bookings| %>
+          <%= date %>
+          <% if @bookings %>
+            <% @bookings.each do |booking| %>
+              <div>
+                <%= booking.user.first_name %>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+      <% if @shares != [] %>
+        <div id="map" style="width: 100%; height: 500px;"></div>
+        <% content_for(:after_js) do %>
+          <%= javascript_tag do %>
+            $(document).ready(function() {
+              var handler = Gmaps.build('Google');
+              handler.buildMap({
+                provider: {
+                  disableDefaultUI: false,
+                  <!-- add google maps options here -->
+                },
+                internal: {
+                  id: 'map'
+                }
               },
-              internal: {
-                id: 'map'
-              }
-            },
-            function() {
-              markers = handler.addMarkers(<%= raw @hash.to_json %>);
-              handler.bounds.extendWith(markers);
-              handler.fitMapToBounds();
-              if (markers.length == 0) {
-                handler.getMap().setZoom(2);
-              } else if (markers.length == 1) {
-                handler.getMap().setZoom(14);
-              }
-            });
-            <!--  -->
+              function() {
+                markers = handler.addMarkers(<%= raw @hash.to_json %>);
+                handler.bounds.extendWith(markers);
+                handler.fitMapToBounds();
+                if (markers.length == 0) {
+                  handler.getMap().setZoom(2);
+                } else if (markers.length == 1) {
+                  handler.getMap().setZoom(14);
+                }
+              });
+              <!--  -->
 
-            <!--  -->
-          });
+              <!--  -->
+            });
+          <% end %>
         <% end %>
       <% end %>
-    <% end %>
-    <div class="text-right"">
-      <br>
-      <%= link_to "< Back to My Fairshares", items_path, class: "btn btn-default btn-lg" %>
+      <div class="text-right"">
+        <br>
+        <%= link_to "< Back to My Fairshares", items_path, class: "btn btn-default btn-lg" %>
+      </div>
     </div>
   </div>
 </div>

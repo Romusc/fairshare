@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'bookings/create'
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, :controllers => { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'registrations' }
 
@@ -14,6 +16,7 @@ Rails.application.routes.draw do
 
   resources :items, only: [:show, :new, :create, :index, :edit, :update] do
     resources :shares, only: [:new, :create, :update]
+    resources :bookings, only: [:create]
   end
 
   resources :shares, only: [:index]

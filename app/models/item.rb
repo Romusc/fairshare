@@ -1,5 +1,6 @@
 class Item < ApplicationRecord
   has_many :shares
+  has_many :bookings
   belongs_to :user
   belongs_to :place
 
