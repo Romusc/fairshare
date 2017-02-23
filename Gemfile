@@ -52,6 +52,7 @@ gem 'omniauth-facebook'
 
 # FOR CALENDAR BOOKINGS
 gem "simple_calendar", "~> 2.0"
+gem "validates_overlap"
 
 
 group :development, :test do
