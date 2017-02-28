@@ -6,6 +6,21 @@
   box-shadow: none;
 }
 
+.search-input-class {
+  color: $brand-primary;
+  background-color: $body-bg;
+  box-shadow: none;
+  border: none;
+  font-size: 20px;
+  text-align: center;
+}
+
+.submit-input-class {
+  background-color: $brand-primary;
+  border: 3px solid black;
+  font-size: 20px;
+}
+
 
 
 

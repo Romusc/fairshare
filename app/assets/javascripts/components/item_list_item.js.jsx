@@ -4,17 +4,17 @@ var ItemListItem = React.createClass({
   render: function() {
     return (
       <div className="item">
-        <div className="item-upvote">TODO</div>
+         <div className="item-upvote">TODO</div>
         <div className="item-body">
           <h3>
-            <a target="_blank">{this.props.item.name}</a>
+            <a href={this.props.item.url} target="_blank">{this.props.item.name}</a>
           </h3>
           <p>{this.props.item.description}</p>
         </div>
         <div className="item-controls">
           <div className="item-control">
             <div className="user-badge-container ">
-              <img src={this.props.item.photo.photo.url} className="avatar"/>
+              <img src={this.props.item.user.photo.photo.url} className="avatar"/>
             </div>
           </div>
         </div>
@@ -22,6 +22,7 @@ var ItemListItem = React.createClass({
     );
   }
 });
+
 
 
 

@@ -9,19 +9,18 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-10 search-box">
-      <div class="col-xs-5 text-center">
+    <div class="col-xs-12 search-box">
+      <div class="col-xs-12 col-sm-4 text-center">
         <h4>I'm interested in</h4>
       </div>
-      <div class="col-xs-5 form-inline">
-      <%= simple_form_for @item, :url => items_path, :method => :get do |f|%>
-        <%= f.input :category, :prompt => "Anything!", label: false, collection: Item::CATEGORIES %>
-        <%= f.submit "Show me what you got!" %>
-      <% end %>
+      <div class="col-xs-12 col-sm-4 text-center">
+        <%= simple_form_for @item, :url => items_path, :method => :get do |f|%>
+          <%= f.input :category, :prompt => "Anything!", input_html: {class:"search-input-class"}, label: false, collection: Item::CATEGORIES %>
       </div>
-    </div>
-    <div class="col-xs-2">
-      <%= link_to "New Item", new_item_path, class: "btn btn-primary" %>
+      <div class="col-xs-12 col-sm-4 text-center">
+          <%= f.submit "Show me what you got!", input_html: {class:"search-input-class"} %>
+        <% end %>
+      </div>
     </div>
   </div>
   <div class="row">

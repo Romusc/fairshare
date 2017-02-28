@@ -5,8 +5,6 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, :controllers => { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'registrations' }
 
-  # devise_for :users, :controllers => { registrations: 'registrations' }
-
   devise_scope :user do
     get "/user/:id" => 'registrations#show'
   end
@@ -25,5 +23,17 @@ Rails.application.routes.draw do
   resources :places
 
   resources :friendships
+
+  resources :products, only: [] do
+    member do
+      post :upvote
+    end
+  end
+
+  JsRoutes.setup do |config|
+    config.include = [
+      /^upvote_product$/
+    ]
+  end
 
 end

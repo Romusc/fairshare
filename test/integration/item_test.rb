@@ -20,13 +20,13 @@ class ItemTest < ActionDispatch::IntegrationTest
     visit "/items"
     save_and_open_screenshot
     assert page.has_content?("My Shares")
-    assert page.has_selector?(".navbar-wagon")
+    assert page.has_selector?(".navbar-wagon-item")
   end
 
   test "shows a specific item details" do
     login_as users(:romu)
     visit "/items"
-    # save_and_open_page
+    save_and_open_page
 
     assert page.has_selector?(".navbar-wagon")
   end

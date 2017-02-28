@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all.order('created_at DESC')
-    @items = Item.search(params[:item][:category]) if params[:item][:category].present? #REFACTO THIS PARAMS MAYBE?
+    @items = Item.search(params[:item][:category]) if !(params[:item].nil?) #REFACTO THIS PARAMS MAYBE?
   end
 
   def show
@@ -51,6 +51,15 @@ class ItemsController < ApplicationController
   end
 
   def destroy
+  end
+
+  def upvote
+    @product = Item.find(params[:id])
+    if current_user.voted_for? @item
+      current_user.unvote_for @item
+    else
+      current_user.up_votes @item
+    end
   end
 
   private
