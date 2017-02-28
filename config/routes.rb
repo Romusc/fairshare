@@ -24,16 +24,13 @@ Rails.application.routes.draw do
 
   resources :friendships
 
-  resources :products, only: [] do
+  resources :items, only: [] do
     member do
       post :upvote
     end
   end
 
-  JsRoutes.setup do |config|
-    config.include = [
-      /^upvote_product$/
-    ]
-  end
-
 end
+
+
+

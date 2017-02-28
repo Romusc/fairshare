@@ -8,5 +8,6 @@ JsRoutes.setup do |config|
   # on a case by case basis
   config.include = [
 
+    /^upvote_item$/
   ]
 end

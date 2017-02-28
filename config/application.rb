@@ -16,6 +16,12 @@ require "rails/test_unit/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+
+# READ THERE: https://labs.chiedo.com/blog/authenticating-your-reactjs-app-with-devise-no-extra-gems-needed/
+config.to_prepare do
+  DeviseController.respond_to :html, :json
+end
+
 module Fairshare
   class Application < Rails::Application
     config.generators do |generate|
@@ -27,3 +33,5 @@ module Fairshare
     # -- all .rb files in that directory are automatically loaded.
   end
 end
+
+

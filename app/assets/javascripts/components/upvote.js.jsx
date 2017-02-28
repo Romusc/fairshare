@@ -6,12 +6,14 @@ var Upvote = React.createClass({
   },
 
   handleClick: function() {
+    console.log("why hello there");
     var that = this;
     $.ajax({
       type: 'POST',
-      url: Routes.upvote_product_path(this.props.product.id, { format: 'json' }),
-      success: function(data) {
-        that.setState({ product: data });
+      url: Routes.upvote_item_path(this.props.item.id, { format: 'json' }),
+      success: function(item) {
+        console.log(item);
+        that.setState({ item: item });
       }
     });
   },

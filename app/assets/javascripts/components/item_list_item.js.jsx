@@ -4,7 +4,9 @@ var ItemListItem = React.createClass({
   render: function() {
     return (
       <div className="item">
-         <div className="item-upvote">TODO</div>
+         <div className="item-upvote">
+            <Upvote item={this.props.item} />
+         </div>
         <div className="item-body">
           <h3>
             <a href={this.props.item.url} target="_blank">{this.props.item.name}</a>

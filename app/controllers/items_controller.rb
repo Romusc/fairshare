@@ -54,7 +54,7 @@ class ItemsController < ApplicationController
   end
 
   def upvote
-    @product = Item.find(params[:id])
+    @item = Item.find(params[:id])
     if current_user.voted_for? @item
       current_user.unvote_for @item
     else
