@@ -12,7 +12,6 @@ var Upvote = React.createClass({
       type: 'POST',
       url: Routes.upvote_item_path(this.props.item.id, { format: 'json' }),
       success: function(item) {
-        console.log(item);
         that.setState({ item: item });
       }
     });
