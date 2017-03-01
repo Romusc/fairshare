@@ -17,11 +17,6 @@ require "rails/test_unit/railtie"
 Bundler.require(*Rails.groups)
 
 
-# READ THERE: https://labs.chiedo.com/blog/authenticating-your-reactjs-app-with-devise-no-extra-gems-needed/
-config.to_prepare do
-  DeviseController.respond_to :html, :json
-end
-
 module Fairshare
   class Application < Rails::Application
     config.generators do |generate|
