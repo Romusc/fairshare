@@ -54,22 +54,24 @@
     <div class="col-xs-12 col-sm-6">
       <div class="col-xs-12">
         <div class="col-xs-12 form-inline booking-box">
-          <%= simple_form_for [@item, @booking], :url => item_bookings_path(@item), :method => :post do |f| %>
+          <%= simple_form_for([@item, @booking], remote: true, :url => item_bookings_path(@item), :method => :post) do |f| %>
             <%= f.input :start_time %>
             <%= f.input :end_time %>
             <%= f.submit "Book" %>
           <% end %>
         </div>
-        <div>
+        <div id="bookings">
           <%= month_calendar events: @bookings do |date, bookings| %>
             <div class="calendar-day">
               <%= date.day %>
             </div>
-            <% bookings.each do |booking| %>
-              <div>
-                <%= booking.user.first_name %>
-              </div>
-            <% end %>
+            <div id="bookings-names">
+              <% bookings.each do |booking| %>
+                <div>
+                  <%= booking.user.first_name %>
+                </div>
+              <% end %>
+            </div>
           <% end %>
         </div>
       </div>

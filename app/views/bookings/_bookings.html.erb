@@ -1,0 +1,12 @@
+<%= month_calendar events: @bookings do |date, bookings| %>
+<div class="calendar-day">
+  <%= date.day %>
+</div>
+<div id="bookings-names">
+  <% bookings.each do |booking| %>
+  <div>
+    <%= booking.user.first_name %>
+  </div>
+  <% end %>
+</div>
+<% end %>
