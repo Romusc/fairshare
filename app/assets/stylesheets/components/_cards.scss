@@ -6,6 +6,11 @@
   position: relative;
   padding: 1em;
 }
+
+.card:hover {
+  border-left: 3px solid $my-blue;
+}
+
 .card-user {
   position: absolute;
   right: 10px;
