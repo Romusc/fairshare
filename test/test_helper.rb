@@ -31,3 +31,9 @@
   Capybara.register_driver :poltergeist do |app|
     Capybara::Poltergeist::Driver.new(app, timeout: 1.minute, phantomjs_options: ['--load-images=no'])
   end
+
+  def assert_presence(model, field)
+    model.valid?
+    assert_match /can't be blank/, model.errors[field].join, "Presence error for #{field} not found on #{model.class}"
+  end
+

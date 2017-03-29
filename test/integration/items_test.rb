@@ -1,6 +1,6 @@
 # require 'test_helper'
 
-class ItemTest < ActionDispatch::IntegrationTest
+class ItemsTest < ActionDispatch::IntegrationTest
   test "lets a signed in user create a new item" do
     login_as users(:romu)
     visit "/items/new"
