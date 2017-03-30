@@ -1,37 +1,57 @@
 
 
 .search-box {
-  border: 1px solid black;
+  height: 175px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  background-size: cover !important;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.search-box h3 {
+  margin-top: 0px;
+  border-bottom: 5px solid $my-blue;
+}
+
+.search-box #search-1 {
+  flex-grow: 3;
+}
+
+.search-box #search-2 {
+  flex-grow: 1;
+}
+
+.search-box #search-3 {
+  flex-grow: 1;
 }
 
 .form-input {
   color: #333333;
   background-color: rgba(0, 0, 0, 0);
-  border: none;
-  border-bottom: 1px solid #333333;
+  border: 3px solid $my-blue;
   box-shadow: none;
+  height: 46px;
 }
 
 .search-input-class {
-  color: $brand-primary;
   background-color: $body-bg;
   box-shadow: none;
-  border: none;
-  font-size: 1.2em;
+  font-size: 1.6em;
   text-align: center;
-  border-bottom: 1px solid $my-blue;
-  border-radius: 0px;
   vertical-align: middle;
 }
 
 .submit-input-class {
   background-color: $brand-primary;
   border: 3px solid black;
-  font-size: 20px;
 }
 
-
-
+#search-submit {
+  width: 100%;
+  height: 46px;
+  font-size: 1.4em;
+}
 
 /* OVERRIDING BOOTSTRAP FORM-CONTROL WITH FORM-INPUT.
 WORTH ASKING ARTHUR HOW TO OVERRIDE IT AND WHETHER IT'S THE BEST WAY TO DO IT */

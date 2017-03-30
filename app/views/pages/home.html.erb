@@ -8,23 +8,24 @@
         </div>
     </div>
   </div>
+
   <div class="row">
-    <div class="col-xs-12 search-box">
-      <div class="col-xs-12 col-sm-4 text-center">
-        <h4>I'm interested in</h4>
-      </div>
-      <div class="col-xs-12 col-sm-4 text-center">
-        <%= simple_form_for @item, :url => items_path, :method => :get do |f|%>
-          <%= f.input :category, :prompt => "Anything!", input_html: {class:"search-input-class"}, label: false, collection: Item::CATEGORIES %>
-      </div>
-      <div class="col-xs-12 col-sm-4 text-center">
-          <%= f.submit "Show me what you got!", input_html: {class:"search-input-class"} %>
-        <% end %>
+    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 padded2 text-left">
+      <div class="search-box">
+        <div id="search-1">
+          <h3>I'm interested in</h3>
+        </div>
+        <div id="search-2">
+          <%= simple_form_for @item, :url => items_path, :method => :get do |f|%>
+            <%= f.input :category, :prompt => "Anything!", input_html: {class:"search-input-class"}, label: false, collection: Item::CATEGORIES %>
+        </div>
+        <div id="search-3">
+            <%= f.submit "Show me what you got!", class: "btn btn-primary", id: "search-submit" %>
+        </div>
+          <% end %>
       </div>
     </div>
 
-  </div>
-  <div class="row">
     <% @items.each do |item| %>
     <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 padded2">
 
