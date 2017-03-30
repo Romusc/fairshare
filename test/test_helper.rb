@@ -8,7 +8,9 @@
 
   class ActiveSupport::TestCase
     fixtures :all
+    include FactoryGirl::Syntax::Methods
   end
+
 
   require 'capybara/rails'
   class ActionDispatch::IntegrationTest
@@ -36,4 +38,5 @@
     model.valid?
     assert_match /can't be blank/, model.errors[field].join, "Presence error for #{field} not found on #{model.class}"
   end
+
 

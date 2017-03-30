@@ -75,7 +75,10 @@ group :development, :test do
   gem 'rake'
 
   # TO ALLOW THE USE OF FACTORIES INSTEAD OF FIXTURES
-  gem 'factory_girl_rails'
+  gem 'factory_girl_rails', '~> 4.0'
+
+  # FOR BEHAVIOUR-DRIVEN DEVELOPMENT
+  gem 'rspec-rails', '~> 3.5'
 end
 
 

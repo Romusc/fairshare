@@ -18,9 +18,12 @@
       </button>
     </form> -->
 
+    <!-- Button (call-to-action) -->
+    <%= link_to t(".top_call_to_action", default: "My Shares"), shares_path, class: "navbar-wagon-item navbar-wagon-button btn" %>
+    <%= link_to t(".top_call_to_action", default: "New Item"), new_item_path, class: "navbar-wagon-item navbar-wagon-button btn" %>
+
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
-
 
       <!-- Profile picture and dropdown -->
       <div class="navbar-wagon-item">
@@ -56,9 +59,6 @@
 
     <% end %>
 
-    <!-- Button (call-to-action) -->
-    <%= link_to t(".top_call_to_action", default: "My Shares"), shares_path, class: "navbar-wagon-item navbar-wagon-button btn" %>
-        <%= link_to t(".top_call_to_action", default: "New Item"), new_item_path, class: "navbar-wagon-item navbar-wagon-button btn" %>
   </div>
 
 

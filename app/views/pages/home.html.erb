@@ -17,7 +17,7 @@
         </div>
         <div id="search-2">
           <%= simple_form_for @item, :url => items_path, :method => :get do |f|%>
-            <%= f.input :category, :prompt => "Anything!", input_html: {class:"search-input-class"}, label: false, collection: Item::CATEGORIES %>
+            <%= f.input :category, :prompt => "Everything!", input_html: {class:"search-input-class"}, label: false, collection: Item::CATEGORIES %>
         </div>
         <div id="search-3">
             <%= f.submit "Show me what you got!", class: "btn btn-primary", id: "search-submit" %>
@@ -31,23 +31,22 @@
 
       <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path item.photo, height: 280, width: 318, crop: :scale %>)">
 
-        <div class="card-description">
-          <div class="col-xs-12">
-            <div class="text-left">
-            <h4><%=item.name%> </h4><h5><%=item.value%> GBP</h5>
+        <div class="card-banner">
+          <div class="card-description">
+            <div class="col-xs-6 text-left">
+              <h4><%=item.name%> </h4>
+            </div>
+            <div class="col-xs-6 text-right">
+              <h4><%=to_currency(item.value)%></h4>
             </div>
           </div>
         </div>
         <img class="card-user avatar-square" src="<%= cl_image_path item.user.photo, height: 280, width: 318, crop: :scale %>">
         <a class="card-link" href="items/<%=item.id%>" ></a>
       </div>
-
-
     </div>
     <%end%>
   </div>
 </div>
-
-<!-- style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('background.jpg');" -->
 
 
