@@ -2,7 +2,13 @@ require 'test_helper'
 
 class ItemsTest < ActionDispatch::IntegrationTest
 
+  # USEFUL IF WE HAVE AJAX IN THE PAGE WITH THE TESTS. TO KEEP IN MIND
+  # after :each do
+  #   TransactionalCapybara::AjaxHelpers.wait_for_ajax(page)
+  # end
+
   def setup
+    TransactionalCapybara.share_connection
     @item = FactoryGirl.create(:item)
     @user = @item.user
   end
@@ -15,7 +21,9 @@ class ItemsTest < ActionDispatch::IntegrationTest
 
     fill_in "item_name", with: "Chaise"
     fill_in "item_value", with: "30"
+    attach_file('item_photo', File.absolute_path('./app/assets/images/fairshares.png'))
     click_button 'Create Item'
+
     save_and_open_page
 
     assert_equal new_item_share_path(Item.last), page.current_path
@@ -25,13 +33,6 @@ class ItemsTest < ActionDispatch::IntegrationTest
 
   test "shows a user list of items" do
     login_as @user
-    puts "@item:"
-    p @item
-    puts "@user:"
-    p @user
-    puts "@user.items"
-    p @user.items
-    visit "/items"
     save_and_open_page
     assert page.has_content?("My Shares")
     assert page.has_selector?(".navbar-wagon-item")
@@ -43,4 +44,6 @@ class ItemsTest < ActionDispatch::IntegrationTest
     save_and_open_page
     assert page.has_selector?(".navbar-wagon")
   end
+
+
 end

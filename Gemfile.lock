@@ -319,6 +319,8 @@ GEM
     thor (0.19.4)
     thread_safe (0.3.6)
     tilt (2.0.6)
+    transactional_capybara (0.2.0)
+      capybara
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (3.1.1)
@@ -382,6 +384,7 @@ DEPENDENCIES
   simple_form
   spring
   spring-watcher-listen (~> 2.0.0)
+  transactional_capybara
   uglifier
   validates_overlap
 

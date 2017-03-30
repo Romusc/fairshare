@@ -17,14 +17,3 @@ class HomeTest < ActionDispatch::IntegrationTest
     # teardown
   end
 end
-
-# class TestSomeObject
-#   def test_something_on_object
-#     # setup
-#     # exercise
-#     # verify
-#     # teardown
-#   end
-# end
-
-# dev and test databases are different >> cf config/database.yml

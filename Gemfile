@@ -81,4 +81,9 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5'
 end
 
+# TO AVOID CAPYBARA LOADING PAGES WHILE FACTORIES SEEDING NOT YET DONE (cf http://technotes.iangreenleaf.com/posts/the-one-true-guide-to-database-transactions-with-capybara.html)
+group :test do
+  gem 'transactional_capybara'
+end
+
 
