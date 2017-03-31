@@ -1,28 +1,5 @@
 <div class="container">
-  <div class="row">
-    <div class="col-xs-12 page-title">
-      <h2>Friends</h2>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="row">
-        <% @friends.each do |friend| %>
-
-        <div class="col-sm-3 col-xs-6 padded2 card-friend">
-          <a href="user/<%=friend.id%>">
-            <div class="col-xs-12">
-              <%= image_tag friend.photo, class: "avatar-large"%>
-            </div>
-            <h6 class="col-xs-12"><%= friend.first_name %></h6>
-          </a>
-        </div>
-
-        <% end %>
-      </div>
-    </div>
-  </div>
-  <div class="row well">
+   <div class="row well">
     <div class="col-xs-12 col-sm-6">
       <!-- Friend requests (Those who have befriended you) -->
       <% @inverse_friends.each do |inverse_friend| %>
@@ -47,6 +24,30 @@
           <% end %>
         </div>
       </div>
+  <div class="row">
+    <div class="col-xs-12 page-title">
+      <h2>Friends</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="row">
+        <% @friends.each do |friend| %>
+
+        <div class="col-sm-3 col-xs-6 padded2 card-friend">
+          <a href="user/<%=friend.id%>">
+            <div class="col-xs-12">
+              <%= image_tag friend.photo, class: "avatar-large"%>
+            </div>
+            <h6 class="col-xs-12"><%= friend.first_name %></h6>
+          </a>
+        </div>
+
+        <% end %>
+      </div>
+    </div>
+  </div>
+
       <div class="row">
         <div class="col-xs-12 page-title">
           <h2>Add new friends</h2>
